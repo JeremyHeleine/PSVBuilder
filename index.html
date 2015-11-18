@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>PSVBuilder</title>
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<link rel="stylesheet" media="screen" href="css/style.css" />
+	</head>
+
+	<body>
+		<header>
+			<h1>PSVBuilder</h1>
+		</header>
+
+		<section class="viewer-section">
+			<div id="viewer-container"></div>
+
+			<div id="viewer-form">
+				<input type="text" id="pano-url" placeholder="Panorama URL or path" />
+				<input type="button" value="Load panorama" />
+			</div>
+		</section>
+
+		<section class="options-section">
+			<ul>
+				<li><a href="#options" class="active">Options</a></li>
+				<li><a href="#more-options">More options</a></li>
+				<li><a href="#test">Test</a></li>
+			</ul>
+
+			<div class="options-list" id="options">
+				<label>
+					<input type="checkbox" />
+					<span>This a first option</span>
+				</label>
+
+				<label>
+					<input type="checkbox" />
+					<span>Another option</span>
+				</label>
+			</div>
+
+			<div class="options-list" id="more-options">
+				<label>
+					<span>Longitude</span>
+					<input type="text" />
+				</label>
+			</div>
+
+			<div class="options-list" id="test">
+			</div>
+		</section>
+
+		<section class="code-section">
+			<textarea cols="40" rows="10" readonly></textarea>
+
+			<input type="button" value="Copy to clipboard" />
+		</section>
+	</body>
+
+</html>
