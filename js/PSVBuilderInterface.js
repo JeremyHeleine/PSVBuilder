@@ -51,8 +51,11 @@ var PSVBuilderInterface = function() {
         builder.onUpdate(displayCode);
 
         // Panorama URL or path
-        document.getElementById('pano-url').addEventListener('input', panoURLChanged);
-        document.getElementById('load-pano-button').addEventListener('click', updatePSVURL);
+        $('#pano-url').bind('input', panoURLChanged);
+        $('#load-pano-button').click(updatePSVURL);
+
+        // Booleans
+        $('#autoload').change(autoloadBooleanChanged);
     };
 
     /**
@@ -62,7 +65,7 @@ var PSVBuilderInterface = function() {
      **/
 
     var panoURLChanged = function() {
-        updatePanoURL(document.getElementById('pano-url').value.trim());
+        updatePanoURL($('#pano-url').val().trim());
     };
 
     /**
@@ -77,6 +80,16 @@ var PSVBuilderInterface = function() {
     };
 
     /**
+     * Updates the "autoload" setting.
+     * @private
+     * @return {void}
+     **/
+
+    var autoloadBooleanChanged = function() {
+        builder.setAutoload($('#autoload').is(':checked'));
+    };
+
+    /**
      * Updates all the values.
      * @private
      * @return {void}
@@ -84,6 +97,7 @@ var PSVBuilderInterface = function() {
 
     var updateAll = function() {
         panoURLChanged();
+        autoloadBooleanChanged();
     };
 
     /**
@@ -93,7 +107,7 @@ var PSVBuilderInterface = function() {
      **/
 
     var updatePSVURL = function() {
-        var pano_url = document.getElementById('pano-url').value.trim();
+        var pano_url = $('#pano-url').val().trim();
 
         var loader = document.createElement('div');
         loader.className = 'loader';

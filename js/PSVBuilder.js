@@ -17,6 +17,18 @@ var PSVBuilder = function() {
     };
 
     /**
+     * Sets the autoload setting.
+     * @public
+     * @param {boolean} auto - The value
+     * @return {void}
+     **/
+
+    this.setAutoload = function(auto) {
+        autoload = auto;
+        updated();
+    };
+
+    /**
      * Generates the PSV code.
      * @public
      * @return {string} The code
@@ -36,6 +48,10 @@ var PSVBuilder = function() {
         // Panorama container
         var container_value = (container === null) ? '\'Container ID\'' : container;
         options.push('container: ' + container_value);
+
+        // Autoload
+        if (autoload)
+            options.push('autoload: true');
 
         // Add the options to the list of lines to display
         options[0] = "\t" + options[0];
@@ -76,4 +92,7 @@ var PSVBuilder = function() {
 
     // Viewer container (null to display a comment)
     var container = null;
+
+    // Simple booleans
+    var autoload = false;
 };
