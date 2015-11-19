@@ -56,6 +56,10 @@ var PSVBuilderInterface = function() {
 
         // Booleans
         $('#autoload').change(autoloadBooleanChanged);
+
+        // Default position
+        $('#default-position').change(defaultPositionChanged);
+        $('#default-position-coords input').bind('input', defaultPositionUpdated);
     };
 
     /**
@@ -90,6 +94,38 @@ var PSVBuilderInterface = function() {
     };
 
     /**
+     * Updates the "default position" setting.
+     * @private
+     * @return {void}
+     **/
+
+    var defaultPositionChanged = function() {
+        var default_position_bool = $('#default-position').is(':checked');
+        builder.setDefaultPositionBoolean(default_position_bool);
+
+        var default_position_inputs = $('#default-position-coords');
+
+        if (default_position_bool)
+            default_position_inputs.slideDown();
+
+        else
+            default_position_inputs.slideUp();
+    };
+
+    /**
+     * Updates the default position.
+     * @private
+     * @return {void}
+     **/
+
+    var defaultPositionUpdated = function() {
+        builder.setDefaultPosition({
+            long: $('#default-longitude').val(),
+            lat: $('#default-latitude').val()
+        });
+    };
+
+    /**
      * Updates all the values.
      * @private
      * @return {void}
@@ -98,6 +134,7 @@ var PSVBuilderInterface = function() {
     var updateAll = function() {
         panoURLChanged();
         autoloadBooleanChanged();
+        defaultPositionChanged();
     };
 
     /**

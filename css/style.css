@@ -95,6 +95,10 @@ input[type="checkbox"]:checked + span:after {
   opacity: 1;
 }
 
+.no-block {
+  display: inline;
+}
+
 header {
   width: 100%;
   padding: 12em 2em 1.5em 60%;

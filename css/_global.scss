@@ -119,3 +119,7 @@ input[type="checkbox"]:checked + span:after {
 	transform: scale(1);
 	opacity: 1;
 }
+
+.no-block {
+	display: inline;
+}

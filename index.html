@@ -26,8 +26,7 @@
 		<section class="options-section">
 			<ul id="options-panels-list">
 				<li><a href="#options" class="active">Options</a></li>
-				<li><a href="#more-options">More options</a></li>
-				<li><a href="#test">Test</a></li>
+				<li><a href="#initial-view">Initial View</a></li>
 			</ul>
 
 			<div class="options-list" id="options">
@@ -37,14 +36,23 @@
 				</label>
 			</div>
 
-			<div class="options-list" id="more-options">
+			<div class="options-list" id="initial-view">
 				<label>
-					<span>Longitude</span>
-					<input type="text" />
+					<input type="checkbox" id="default-position" />
+					<span>Set default position</span>
 				</label>
-			</div>
 
-			<div class="options-list" id="test">
+				<div id="default-position-coords">
+					<label class="no-block">
+						<span>Longitude:</span>
+						<input type="text" id="default-longitude" value="0" size="4" />
+					</label>
+
+					<label class="no-block">
+						<span>Latitude:</span>
+						<input type="text" id="default-latitude" value="0" size="4" />
+					</label>
+				</div>
 			</div>
 		</section>
 
