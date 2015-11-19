@@ -1,4 +1,7 @@
 @charset "UTF-8";
+@keyframes spin {
+  to {
+    transform: rotate(1turn); } }
 html {
   box-sizing: border-box; }
 
@@ -97,6 +100,15 @@ header {
     padding: 1em 1.5em;
     width: 80%;
     font-size: 1.2em; }
+
+.loader {
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+  border: 3px solid transparent;
+  border-top-color: #0096FF;
+  border-radius: 50%;
+  animation: spin 0.8s ease infinite; }
 
 #viewer-container {
   margin: 0 auto;

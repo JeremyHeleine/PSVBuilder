@@ -59,6 +59,9 @@ var PSVBuilderInterface = function() {
     var updatePSVURL = function() {
         var pano_url = document.getElementById('pano-url').value.trim();
 
+        var loader = document.createElement('div');
+        loader.className = 'loader';
+
         PSV = new PhotoSphereViewer({
             panorama: pano_url,
             container: 'viewer-container',
@@ -66,7 +69,13 @@ var PSVBuilderInterface = function() {
             size: {
                 width: '90%',
                 height: 480
-            }
+            },
+
+            loading_html: loader,
+
+            navbar: true,
+
+            time_anim: false
         });
     };
 
