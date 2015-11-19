@@ -5,12 +5,48 @@
 
 var PSVBuilderInterface = function() {
     /**
+     * Displays / Hides the right options panels.
+     * @return {void}
+     **/
+
+    var togglePanels = function() {
+        $('#options-panels-list li a').each(function() {
+            var a = $(this);
+            var panel = $(a.attr('href'));
+
+            if (a.hasClass('active'))
+                panel.slideDown();
+
+            else
+                panel.slideUp();
+        });
+    };
+
+    /**
+     * Shows the right panel.
+     * @param {Event} evt - The click event
+     * @return {void}
+     **/
+
+    var changeActivePanel = function(evt) {
+        $('#options-panels-list li a').removeClass('active');
+        $(evt.target).addClass('active');
+
+        togglePanels();
+
+        return false;
+    };
+
+    /**
      * Attaches the right events to the right elements.
      * @private
      * @return {void}
      **/
 
     var attachEvents = function() {
+        // Panels links
+        $('#options-panels-list li a').click(changeActivePanel);
+
         // Code changed
         builder.onUpdate(displayCode);
 
@@ -100,6 +136,7 @@ var PSVBuilderInterface = function() {
 
     // Initialization
     attachEvents();
+    togglePanels();
     updateAll();
 
     // First display
