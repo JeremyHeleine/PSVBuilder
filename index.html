@@ -19,7 +19,7 @@
 
 			<div id="viewer-form">
 				<input type="text" id="pano-url" placeholder="Panorama URL or path" />
-				<input type="button" value="Load panorama" />
+				<input type="button" id="load-pano-button" value="Load panorama" />
 			</div>
 		</section>
 
@@ -54,10 +54,20 @@
 		</section>
 
 		<section class="code-section">
-			<textarea cols="40" rows="10" readonly></textarea>
+			<textarea cols="40" rows="10" id="psv-code" readonly></textarea>
 
 			<input type="button" value="Copy to clipboard" />
 		</section>
+
+		<script src="js/three.min.js"></script>
+		<script src="js/photo-sphere-viewer.min.js"></script>
+
+		<script src="js/PSVBuilder.js"></script>
+		<script src="js/PSVBuilderInterface.js"></script>
+
+		<script>
+			var builder_interface = new PSVBuilderInterface();
+		</script>
 	</body>
 
 </html>
