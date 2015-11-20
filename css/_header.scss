@@ -11,3 +11,10 @@ header {
 		color: #FFFFFF;
 	}
 }
+
+@media screen and (max-width: 1000px) {
+	header {
+		padding: 8em 2em 1.5em;
+		text-align: center;
+	}
+}

@@ -39,6 +39,19 @@
 	background-color: #3D3D3D;
 }
 
+@media screen and (max-width: 1000px) {
+	.viewer-section {
+		float: none;
+		width: 100%;
+	}
+
+	.options-section,
+	.code-section {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
 .options-section ul {
 	margin: 0;
 	padding: 0;
