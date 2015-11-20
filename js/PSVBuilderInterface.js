@@ -6,6 +6,7 @@
 var PSVBuilderInterface = function() {
     /**
      * Displays / Hides the right options panels.
+     * @private
      * @return {void}
      **/
 
@@ -24,6 +25,7 @@ var PSVBuilderInterface = function() {
 
     /**
      * Shows the right panel.
+     * @private
      * @param {Event} evt - The click event
      * @return {void}
      **/
@@ -38,6 +40,58 @@ var PSVBuilderInterface = function() {
     };
 
     /**
+     * Copies the current code to the user's clipboard.
+     * @private
+     * @return {void}
+     **/
+
+    var copyToClipboard = function() {
+        var textarea = document.getElementById('psv-code');
+        textarea.select();
+
+        try {
+            document.execCommand('copy');
+            textarea.blur();
+
+            clipboardMessage('success');
+        }
+
+        catch (e) {
+            clipboardMessage('failure');
+        }
+    };
+
+    /**
+     * Displays a message related to the copy/paste feature.
+     * @private
+     * @param {string} t - The type of message to display (success or failure)
+     * @return {void}
+     **/
+
+    var clipboardMessage = function(t) {
+        var btn = $('#copy-to-clipboard-button');
+        var pos = btn.offset();
+
+        var msg = (t == 'success') ? 'Copied!' : 'Oops, please copy manually.';
+
+        var notif = $('<p />')
+        .addClass('clipboard-message clipboard-' + t)
+        .width(btn.outerWidth())
+        .css('left', pos.left + 'px')
+        .text(msg)
+        .appendTo(document.body);
+
+        notif
+        .css('top', (pos.top - notif.outerHeight()) + 'px')
+        .animate({
+            top: '-=30',
+            opacity: 0
+        }, 1500, 'easeOutQuad', function() {
+            notif.remove();
+        });
+    };
+
+    /**
      * Attaches the right events to the right elements.
      * @private
      * @return {void}
@@ -46,6 +100,9 @@ var PSVBuilderInterface = function() {
     var attachEvents = function() {
         // Panels links
         $('#options-panels-list li a').click(changeActivePanel);
+
+        // Copy to clipboard button
+        $('#copy-to-clipboard-button').click(copyToClipboard);
 
         // Code changed
         builder.onUpdate(displayCode);

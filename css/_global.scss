@@ -124,3 +124,22 @@ input[type="checkbox"]:checked + span:after {
 	display: inline;
 	white-space: nowrap;
 }
+
+.clipboard-message {
+	position: absolute;
+	margin: 0;
+	padding: 0.5em 1em;
+
+	border-radius: 0.2em;
+
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.clipboard-success {
+	background-color: #009600;
+}
+
+.clipboard-failure {
+	background-color: #960000;
+}
