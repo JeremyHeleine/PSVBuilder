@@ -59,7 +59,7 @@ var PSVBuilderInterface = function() {
 
         // Default position
         $('#default-position').change(defaultPositionChanged);
-        $('#default-position-coords input').bind('input', defaultPositionUpdated);
+        $('#default-position-coords input').bind('input', defaultPositionValuesUpdated);
     };
 
     /**
@@ -113,6 +113,21 @@ var PSVBuilderInterface = function() {
     };
 
     /**
+     * The user updated the default position.
+     * @private
+     * @return {void}
+     **/
+
+    var defaultPositionValuesUpdated = function() {
+        defaultPositionUpdated();
+
+        if (PSV !== null) {
+            var pos = builder.getDefaultPosition();
+            PSV.moveTo(pos.long, pos.lat);
+        }
+    };
+
+    /**
      * Updates the default position.
      * @private
      * @return {void}
@@ -126,6 +141,19 @@ var PSVBuilderInterface = function() {
     };
 
     /**
+     * Updates the default position using Photo Sphere Viewer.
+     * @private
+     * @param {object} pos - The new position
+     * @return {void}
+     **/
+
+    var updatePositionFromPSV = function(pos) {
+        $('#default-longitude').val(pos.longitude);
+        $('#default-latitude').val(pos.latitude);
+        defaultPositionUpdated();
+    };
+
+    /**
      * Updates all the values.
      * @private
      * @return {void}
@@ -135,6 +163,7 @@ var PSVBuilderInterface = function() {
         panoURLChanged();
         autoloadBooleanChanged();
         defaultPositionChanged();
+        defaultPositionUpdated();
     };
 
     /**
@@ -158,12 +187,16 @@ var PSVBuilderInterface = function() {
                 height: 480
             },
 
+            default_position: builder.getDefaultPosition(),
+
             loading_html: loader,
 
             navbar: true,
 
             time_anim: false
         });
+
+        PSV.addAction('position-updated', updatePositionFromPSV);
     };
 
     /**

@@ -48,9 +48,19 @@ var PSVBuilder = function() {
      **/
 
     this.setDefaultPosition = function(pos) {
-        default_position.longitude = parseNumber(pos.long);
-        default_position.latitude = parseNumber(pos.lat);
+        default_position.long = parseNumber(pos.long);
+        default_position.lat = parseNumber(pos.lat);
         updated();
+    };
+
+    /**
+     * Returns the default position.
+     * @public
+     * @return {object} The position
+     **/
+
+    this.getDefaultPosition = function() {
+        return default_position;
     };
 
     /**
@@ -160,7 +170,7 @@ var PSVBuilder = function() {
     // Default position
     var default_position_bool = false;
     var default_position = {
-        longitude: 0,
-        latitude: 0
+        long: 0,
+        lat: 0
     };
 };
