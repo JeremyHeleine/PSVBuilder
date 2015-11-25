@@ -8,7 +8,7 @@ The development of PSVBuilder is continuous. For now it does not implement all t
 
 ## Usage
 
-A live version of PSVBuilder will be available soon. In the meantime, you can use it on your computer. To do that, download this repo or, better, clone it on your computer. Then, just open the `index.html` file in a browser (you don't even need a server).
+A live version of PSVBuilder can be used [right here](http://jeremyheleine.github.io/PSVBuilder/). You can also use it on your computer. To do that, download this repo or, better, clone it on your computer. Then, just open the `index.html` file in a browser (you don't even need a server).
 
 Basically, PSVBuilder will generate a very general Photo Sphere Viewer code. In this code, you will need to indicate the path or the URL of a panorama, and the ID of the container. You can manually copy this code, or you can use the dedicated button to copy it directly into your clipboard, if you have a compatible browser.
 
