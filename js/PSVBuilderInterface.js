@@ -113,6 +113,7 @@ var PSVBuilderInterface = function() {
 
         // Booleans
         $('#autoload').change(autoloadBooleanChanged);
+        $('#usexmp').change(useXMPBooleanChanged);
 
         // Default position
         $('#default-position').change(defaultPositionChanged);
@@ -148,6 +149,16 @@ var PSVBuilderInterface = function() {
 
     var autoloadBooleanChanged = function() {
         builder.setAutoload($('#autoload').is(':checked'));
+    };
+
+    /**
+     * Updates the "read XMP" setting.
+     * @private
+     * @return {void}
+     **/
+
+    var useXMPBooleanChanged = function() {
+        builder.setXMP($('#usexmp').is(':checked'));
     };
 
     /**
@@ -219,6 +230,7 @@ var PSVBuilderInterface = function() {
     var updateAll = function() {
         panoURLChanged();
         autoloadBooleanChanged();
+        useXMPBooleanChanged();
         defaultPositionChanged();
         defaultPositionUpdated();
     };

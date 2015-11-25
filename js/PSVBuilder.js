@@ -29,6 +29,18 @@ var PSVBuilder = function() {
     };
 
     /**
+     * Sets the "read XMP" setting.
+     * @public
+     * @param {boolean} read - The value
+     * @return {void}
+     **/
+
+    this.setXMP = function(read) {
+        usexmp = read;
+        updated();
+    };
+
+    /**
      * Sets the "default position" boolean.
      * @public
      * @param {boolean} new_value - The value
@@ -120,6 +132,10 @@ var PSVBuilder = function() {
         if (autoload)
             options.push('autoload: true');
 
+        // XMP data
+        if (!usexmp)
+            options.push('usexmpdata: false');
+
         // Default position
         if (default_position_bool)
             options.push('default_position: ' + parseObject(default_position));
@@ -166,6 +182,7 @@ var PSVBuilder = function() {
 
     // Simple booleans
     var autoload = false;
+    var usexmp = false;
 
     // Default position
     var default_position_bool = false;
